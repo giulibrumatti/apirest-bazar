@@ -24,7 +24,8 @@ public class ClienteService implements IClienteService{
 
     @Override
     public List<Cliente> getClients() {
-        return List.of();
+        List<Cliente> listClient = clientRep.findAll();
+        return listClient;
     }
 
     @Override
@@ -34,6 +35,16 @@ public class ClienteService implements IClienteService{
 
     @Override
     public void editClient(Long idOriginal, String nuevoNombre, String nuevoApellido, String nuevoDni) {
+        Cliente clien = this.findClient(idOriginal);
+        clien.setNombre(nuevoNombre);
+        clien.setApellido(nuevoApellido);
+        clien.setDni(nuevoDni);
+        clientRep.save(clien);
+    }
 
+    @Override
+    public Cliente findClient(Long id) {
+        Cliente clien = clientRep.findById(id).orElse(null);
+        return clien;
     }
 }

@@ -18,7 +18,9 @@ public interface IVentaService {
 
     public void editSale(Venta sale);
 
-    public void editSale(Long codVentaOr, LocalDate fechaNueva, Double montoNuevo, List<Producto> nuevaListaPro, Cliente nuevoCliente);
+    public void editSale(Long codVentaOr, LocalDate fechaNueva, Double montoNuevo);
+
+    public Venta findVenta(Long id);
 
 
 }

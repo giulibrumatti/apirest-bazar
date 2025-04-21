@@ -17,26 +17,36 @@ public class VentaService implements IVentaService{
 
     @Override
     public void saveSale(Venta sale) {
-
+        saleRep.save(sale);
     }
 
     @Override
     public void deleteSale(Long id) {
-
+        saleRep.deleteById(id);
     }
 
     @Override
     public List<Venta> getSales() {
-        return List.of();
+        List<Venta> listSales = saleRep.findAll();
+        return listSales;
     }
 
     @Override
     public void editSale(Venta sale) {
-
+        saleRep.save(sale);
     }
 
     @Override
-    public void editSale(Long codVentaOr, LocalDate fechaNueva, Double montoNuevo, List<Producto> nuevaListaPro, Cliente nuevoCliente) {
+    public void editSale(Long codVentaOr, LocalDate fechaNueva, Double montoNuevo) {
 
+        Venta sale = this.findVenta(codVentaOr);
+        sale.setFechaVenta(fechaNueva);
+        sale.setMontoTotal(montoNuevo);
+    }
+
+    @Override
+    public Venta findVenta(Long id) {
+        Venta sale = saleRep.findById(id).orElse(null);
+        return sale;
     }
 }

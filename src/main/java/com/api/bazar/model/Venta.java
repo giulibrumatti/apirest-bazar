@@ -1,9 +1,7 @@
 package com.api.bazar.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,7 +16,11 @@ public class Venta {
     private Long codVenta;
     private LocalDate fechaVenta;
     private Double montoTotal;
+    @OneToMany(mappedBy="venta")
+    @JsonManagedReference
     private List<Producto> listaProductos;
+    @OneToOne
+    @JoinColumn(name = "idCliente", referencedColumnName = "idCliente")
     private Cliente unCliente;
 
     public Venta() {

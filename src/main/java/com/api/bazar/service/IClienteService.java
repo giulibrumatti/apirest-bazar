@@ -18,4 +18,5 @@ public interface IClienteService {
 
     public void editClient(Long idOriginal, String nuevoNombre, String nuevoApellido, String nuevoDni);
 
+    public Cliente findClient(Long id);
 }

@@ -1,0 +1,4 @@
+package com.api.bazar.controller;
+
+public class VentaController {
+}

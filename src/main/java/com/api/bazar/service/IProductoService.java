@@ -13,6 +13,8 @@ public interface IProductoService {
 
     public List<Producto> getProducts();
 
+    public Producto findProduct(Long id);
+
     public void editProduct(Producto product);
 
     public void editProduct(Long codProdOr, String nuevoNombre, String nuevaMarca, Double nuevoCosto, Integer nuevoStock);
