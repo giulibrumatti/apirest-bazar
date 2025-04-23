@@ -37,12 +37,12 @@ public class ProductoController {
         return "El producto fue eliminado con exito";
     }
 
-    @PostMapping("/productos/edtar/{id}")
+    @PutMapping("/productos/editar/{id}")
     public Producto editProduct(@PathVariable ("id") Long id,
-                                @RequestParam(required = false, name = "marca") String nuevaMarca,
                                 @RequestParam(required = false, name = "nombre") String nuevoNombre,
+                                @RequestParam(required = false, name = "marca") String nuevaMarca,
                                 @RequestParam(required = false, name = "costo") Double nuevoCosto,
-                                @RequestParam(required = false, name = "stock") Integer nuevoStock){
+                                @RequestParam(required = false, name = "cantidadStock") Integer nuevoStock){
         prodServ.editProduct(id, nuevoNombre, nuevaMarca, nuevoCosto, nuevoStock);
         Producto prod = prodServ.findProduct(id);
 

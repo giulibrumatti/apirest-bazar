@@ -14,7 +14,7 @@ public class ClienteController {
     private IClienteService clientServ;
 
     @PostMapping("/clientes/crear")
-    public String createCliente(Cliente client){
+    public String createCliente(@RequestBody Cliente client){
         clientServ.saveClient(client);
         return "El cliente se creo con exito";
     }
@@ -37,7 +37,7 @@ public class ClienteController {
         return "El cliente fue eliminado con exito";
     }
 
-    @PostMapping("/clientes/edtar/{id}")
+    @PutMapping("/clientes/editar/{id}")
     public Cliente editProduct(@PathVariable ("id") Long id,
                                 @RequestParam(required = false, name = "nombre") String nuevoNombre,
                                 @RequestParam(required = false, name = "apellido") String nuevoApellido,
