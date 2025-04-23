@@ -13,21 +13,24 @@ import java.util.List;
 public class Venta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long codVenta;
+    private Long codigoVenta;
+
     private LocalDate fechaVenta;
     private Double montoTotal;
-    @OneToMany(mappedBy="venta")
-    @JsonManagedReference
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "codigo_venta")
     private List<Producto> listaProductos;
+
     @OneToOne
-    @JoinColumn(name = "idCliente", referencedColumnName = "idCliente")
+    @JoinColumn(name = "id_cliente", referencedColumnName = "idCliente")
     private Cliente unCliente;
 
     public Venta() {
     }
 
     public Venta(Long codVenta, LocalDate fechaVenta, Double montoTotal, List<Producto> listaProductos, Cliente unCliente) {
-        this.codVenta = codVenta;
+        this.codigoVenta = codVenta;
         this.fechaVenta = fechaVenta;
         this.montoTotal = montoTotal;
         this.listaProductos = listaProductos;
